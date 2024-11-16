@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Bharath</title>
+  <link rel="icon" type="image/x-icon" href="Assets/pr1.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+  <link rel="stylesheet" media="screen and (max-width: 821px)" href="responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<style>
+  /* CSS for the typing animation */
+  .typing-animation::after {
+    content: "|";
+    /* Cursor */
+    animation: blink-caret 1s infinite;
+  }
+
+  /* Keyframe animation for the cursor blinking */
+  @keyframes blink-caret {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+<script>
+  function scrolltop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  let contact = document.getElementById("contactForm");
+  contact.addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert(`Sorry Request cannot be accepted due to some technical errors`);
+  });
+</script>
+
+<body>
+  <nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="#" id="typewriter" style="color: #008394"></a>
+      </div>
+
+      <ul class="menu-list">
+        <li><a href="#home" class="t-white roboto">Home</a></li>
+        <li><a href="#about" class="t-white roboto">About</a></li>
+        <li><a href="#skills" class="t-white roboto">Skills</a></li>
+        <li><a href="#education" class="t-white roboto">Education</a></li>
+        <li><a href="#projects" class="t-white roboto">Projects</a></li>
+        <li>
+          <a href="#certifications" class="t-white roboto">Certifications</a>
+        </li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="icon cancel-btn">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .navbar .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #typewriter {
+      display: inline-block;
+      width: 200px;
+      /* Adjust this value based on the widest text */
+      white-space: nowrap;
+      overflow: hidden;
+      vertical-align: middle;
+      /* Ensures alignment with the navbar links */
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const body = document.querySelector("body");
+      const navbar = document.querySelector(".navbar");
+      const menu = document.querySelector(".menu-list");
+      const menuBtn = document.querySelector(".menu-btn");
+      const cancelBtn = document.querySelector(".cancel-btn");
+      const typewriterElement = document.getElementById("typewriter");
+
+      const texts = ["Portfolio"];
+      let currentIndex = 0;
+      let currentText = "";
+      let currentCharIndex = 0;
+      let cycleCount = 0;
+      const maxCycles = 2;
+
+      function typeText() {
+        if (cycleCount >= maxCycles) {
+          typewriterElement.textContent = texts[0]; // Ensure "Portfolio" remains visible
+          return;
+        }
+
+        if (currentCharIndex < texts[currentIndex].length) {
+          currentText += texts[currentIndex].charAt(currentCharIndex);
+          typewriterElement.textContent = currentText;
+          currentCharIndex++;
+          setTimeout(typeText, 200);
+        } else {
+          setTimeout(deleteText, 1000);
+        }
+      }
+
+      function deleteText() {
+        if (cycleCount >= maxCycles) {
+          return;
+        }
+
+        if (currentCharIndex > 0) {
+          currentText = currentText.slice(0, -1);
+          typewriterElement.textContent = currentText;
+          currentCharIndex--;
+          setTimeout(deleteText, 100);
+        } else {
+          currentIndex = (currentIndex + 1) % texts.length;
+          cycleCount++;
+          setTimeout(typeText, 200);
+        }
+      }
+
+      typeText();
+
+      menuBtn.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevents click event from propagating to parent elements
+        menu.classList.add("active");
+        menuBtn.classList.add("hide");
+        cancelBtn.classList.add("show");
+        body.classList.add("disabledScroll");
+      });
+
+      cancelBtn.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevents click event from propagating to parent elements
+        menu.classList.remove("active");
+        menuBtn.classList.remove("hide");
+        cancelBtn.classList.remove("show");
+        body.classList.remove("disabledScroll");
+      });
+
+      // Close the menu when clicking outside of it
+      document.addEventListener("click", function (event) {
+        if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+          menu.classList.remove("active");
+          menuBtn.classList.remove("hide");
+          cancelBtn.classList.remove("show");
+          body.classList.remove("disabledScroll");
+        }
+      });
+
+      window.addEventListener("scroll", function () {
+        navbar.classList.toggle("sticky", window.scrollY > 20);
+      });
+
+      // Enable navigation for small devices
+      const menuLinks = document.querySelectorAll(".menu-list li a");
+      menuLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          if (menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            menuBtn.classList.remove("hide");
+            cancelBtn.classList.remove("show");
+            body.classList.remove("disabledScroll");
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Home Section -->
+  <section id="home" class="home-container">
+    <div class="home-left">
+      <div class="home-content">
+        <h6 class="poppins">Hi, I'm</h6>
+        <h1 class="t-white">
+          Sri Bharath
+        </h1>
+        <h4 class="poppins">
+          <span class="typing-animation"></span>
+        </h4>
+        <button class="btn poppins" id="resumeBtn">Resume</button>
+        <a class="btn live poppins" id="hireme" href="https://www.linkedin.com/in/sri-bharath/">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+    <div class="home-right">
+      <div class="circle" id="mainImage">
+        <!-- Removed the img tag and used background-image instead -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Modal -->
+  <div id="resumeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Download Resume</h2>
+      <div class="resume-options">
+        <a href="Assets/V Sri Bharath Resume.pdf" download="Sri_Bharath_Resume.pdf" target="_blank">
+          <button class="btn poppins dark-theme">Resume</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <style>
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: #000000;
+      color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #000000;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .resume-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume-options button {
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #008394;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .resume-options button:hover {
+      background-color: white;
+    }
+  </style>
+
+  <script>
+    // JavaScript to handle modal functionality
+    const modal = document.getElementById("resumeModal");
+    const btn = document.getElementById("resumeBtn");
+    const span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // JavaScript to simulate typing effect
+    const texts = [
+      "Frontend Web Developer.",
+      "Aspiring Full Stack Developer.",
+      "Tech Curious.",
+      "Frontend Web Developer.",
+    ];
+
+    let textIndex = 0;
+    let index = 0;
+    let isEnglish = true;
+    let typingFinished = false;
+
+    function type() {
+      if (typingFinished) return;
+
+      const currentText = texts[textIndex];
+
+      document.querySelector(".typing-animation").textContent = currentText.slice(0, index);
+
+      index++;
+      if (index <= currentText.length) {
+        setTimeout(type, 200);
+      } else {
+        setTimeout(() => {
+          isEnglish = !isEnglish;
+          index = 0;
+          if (!isEnglish) {
+            textIndex++;
+            if (textIndex >= texts.length) {
+              textIndex = 0;
+              isEnglish = true;
+              typingFinished = true;
+            }
+          }
+          setTimeout(type, 500);
+        }, 1000);
+      }
+    }
+
+    function startTyping() {
+      type();
+      setTimeout(() => {
+        function finalLoop() {
+          if (typingFinished) {
+            type();
+            setTimeout(() => {
+              isEnglish = !isEnglish;
+              index = 0;
+              if (isEnglish) {
+                typingFinished = true;
+                return;
+              }
+              setTimeout(finalLoop, 2000);
+            }, 2000);
+          }
+        }
+        finalLoop();
+      }, (texts.length * 2 + 1) * 200 + 2000);
+    }
+
+    startTyping();
+  </script>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-container">
+      <h1 class="t-center my-2 t-white f-2">About Me</h1>
+      <div class="about-content" id="englishContent">
+        <p class="description">
+          Motivated Full Stack Developer with a strong foundation in front-end web development
+          and a drive to deliver impactful, high-quality solutions. Dedicated to leading
+          transformative projects from concept to execution, with a focus on achieving measurable
+          outcomes. Eager to bring my technical skills and comprehensive understanding of
+          software development to tackle complex challenges and contribute meaningfully to
+          future success.
+        </p>
+      </div>
+      <div class="button-container">
+        <a class="btn" id="hireMeButton" href="https://www.linkedin.com/in/sri-bharath/">
+          Hire Me
+        </a>
+      </div>
+    </div>
+x
+  </section>
+
+  <style>
+    body {
+      background-color: black;
+      /* Set background to black */
+      color: #000000;
+      /* Set text color to white */
+      font-family: Arial, sans-serif;
+      /* Adjust the font as needed */
+    }
+
+    .about-container {
+      padding: 2rem;
+      border: 2px solid #008394;
+      /* Adding border around the About Me section */
+      border-radius: 10px;
+      /* Adding more border-radius for rounded corners */
+      margin: 2rem auto;
+      /* Center the container with auto margin */
+      width: 80%;
+      /* Make the container narrower */
+      box-shadow: #000;
+      /* Adding shadow for better visibility */
+      background-color: #000000;
+      /* Set a dark background color for contrast */
+    }
+
+    .t-center {
+      text-align: center;
+    }
+
+    .my-2 {
+      margin: 2rem 0;
+    }
+
+    .t-white {
+      color: #000000;
+    }
+
+    .f-2 {
+      font-size: 2rem;
+    }
+
+    .description {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      text-align: justify;
+      /* Justify the text */
+    }
+
+    .button-container {
+      margin-top: 1.5rem;
+      text-align: center;
+      /* Center the buttons */
+    }
+
+    /* Button styles */
+    .btn {
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #008394;
+      /* Button color matching theme */
+      color: #000000;
+      border: 2px solid #008394;
+      /* Matching border to button color */
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+      /* Add transitions for smooth hover effect */
+    }
+
+    .btn:hover {
+      background-color: black;
+      /* On hover, background becomes transparent */
+      color: #008394;
+      /* Text color changes to match button border */
+    }
+
+    /* Adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .about-container {
+        padding: 1rem;
+        width: 95%;
+        /* Adjust width for smaller screens */
+        margin: 2rem auto;
+        /* Center the container on smaller screens */
+      }
+
+      .f-2 {
+        font-size: 1.5rem;
+        /* Adjust font size for smaller screens */
+      }
+
+      .description {
+        font-size: 1rem;
+        /* Adjust font size for smaller screens */
+      }
+    }
+  </style>
+  <!-- Skills Section -->
+  <section id="skills">
+    <br /><br />
+    <h1 class="t-center my-2 t-white f-2">Skills</h1>
+    <div class="skills-container flex s-center h-50">
+      <div class="skill-icon">
+        <img src="Assets/c .png" class="skill-logo" alt="C Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/java.png" class="skill-logo" alt="JAVA Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/python.jpeg" class="skill-logo" alt="PYTHON Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/html.webp" class="skill-logo" alt="HTML Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/css.png" class="skill-logo" alt="CSS Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/js.webp" class="skill-logo" alt="JavaScript Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/react.png" class="skill-logo" alt="React Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/mysql.png" class="skill-logo" alt="MySQL Logo" />
+      </div>
+      <div class="skill-icon">
+        <img src="Assets/mongodb.png" class="skill-logo" alt="MongoDB Logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <h1 class="t-center my-2 t-white f-2">Education</h1>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <i class="fas fa-school fa-2x icon"></i>
+          <div class="timeline-text">
+            <h2>2016-2020</h2>
+            <p class="en">Secondary Education</p>
+            <p class="en">Giridhanva School, Bengaluru</p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <i class="fas fa-user-graduate fa-2x icon"></i>
+          <div class="timeline-text">
+            <h2>2020-2022</h2>
+            <p class="en">11th-12th</p>
+            <p class="en">Sree Venkateswara PU College, Bengaluru</p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <i class="fas fa-university fa-2x icon"></i>
+          <div class="timeline-text">
+            <h2>2022-2026</h2>
+            <p class="en">
+              Bachelor of Engineering (Information Science and Engineering)
+            </p>
+            <p class="en">Cambridge Institute Of Technology, Bengaluru</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h1 class="t-center my-2 t-white f-2">Projects</h1>
+      <div class="projects-container">
+        <!-- Project Item 1 -->
+        <div class="projects-item">
+          <div class="image-container">
+            <img src="Assets/p1.jpg" alt="Project 1" />
+          </div>
+          <h1 class="t-white">Project 1</h1>
+          <p class="t-white english">
+            <strong>Project:</strong> <br />
+          </p>
+          <div class="buttons">
+            <a href="" class="btn">GitHub</a>
+            <a href="" class="btn live">Video</a>
+          </div>
+        </div>
+
+        <!-- Project Item 2 -->
+        <div class="projects-item">
+          <div class="image-container">
+            <img src="Assets/p2.png" alt="Project 2" />
+          </div>
+          <h1 class="t-white">Project 2</h1>
+          <p class="t-white english">
+          </p>
+          <div class="buttons">
+            <a href="" class="btn">GitHub</a>
+            <a href="" class="btn live">Video</a>
+          </div>
+        </div>
+
+
+        <!-- Project Item 3 -->
+        <div class="projects-item">
+          <div class="image-container">
+            <img src="Assets/p3.png" alt="Project 3" />
+          </div>
+          <h1 class="t-white">Project 3</h1>
+          <p class="t-white english">
+          </p>
+          <div class="buttons">
+            <a href="" class="btn">GitHub</a>
+            <a href="" class="btn live">Video</a>
+          </div>
+        </div>
+
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const projectsSection = document.querySelector("#projects");
+
+        // Function to handle adding the 'visible' class
+        const handleScroll = () => {
+          const sectionTop = projectsSection.getBoundingClientRect().top;
+          const viewportHeight = window.innerHeight;
+
+          if (sectionTop < viewportHeight * 0.8) {
+            projectsSection.classList.add("visible");
+          }
+        };
+
+        // Listen for scroll events
+        window.addEventListener("scroll", handleScroll);
+
+        // Trigger the scroll handler on page load
+        handleScroll();
+
+        // Handle smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: "smooth",
+              });
+
+              // Add the visible class after scrolling to the section
+              setTimeout(() => {
+                targetSection.classList.add("visible");
+              }, 500); // Delay to match the scroll animation
+            }
+          });
+        });
+      });
+
+      // Function to open video in a new tab
+      function playVideo(imageId, videoId) {
+        const videoElement = document.getElementById(videoId);
+        const videoSrc = videoElement.querySelector('source').src;
+
+        if (videoSrc) {
+          // Open the video in a new tab
+          window.open(videoSrc, '_blank');
+        }
+      }
+
+    </script>
+    <!-- Certification Section -->
+    <section id="certifications">
+      <br />
+      <h1 class="t-white f-2">Certifications<br /><br /></h1>
+      <div class="certifications-container">
+        <div class="certification-item">
+          <img class="certification-image" src="Assets/pythoncert.png" alt="Python" />
+          <div class="certification-details">
+            <h2 class="cert-en">Python</h2>
+            <p class="cert-en">Issued by GUVI</p>
+          </div>
+        </div>
+        <div class="certification-item">
+          <img class="certification-image" src="Assets/ml.png" alt="Python For ML" />
+          <div class="certification-details">
+            <h2 class="cert-en">Python For ML</h2>
+            <p class="cert-en">Issued by Great Learning</p>
+          </div>
+        </div>
+        <div class="certification-item">
+          <img class="certification-image" src="Assets/javaprog.png" alt="Programming Using Java" />
+          <div class="certification-details">
+            <h2 class="cert-en">Programming Using Java</h2>
+            <p class="cert-en">Issued by Infosys Springboard</p>
+          </div>
+        </div>
+        <div class="certification-item">
+          <img class="certification-image" src="Assets/dsacert.png" alt="DSA Using Java" />
+          <div class="certification-details">
+            <h2 class="cert-en">DSA Using Java</h2>
+            <p class="cert-en">Issued by Infosys Springboard</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+      <ul class="nav-links">
+        <li><a href="#home" class="poppinss">Home</a></li>
+        <li><a href="#about" class="poppinss">About</a></li>
+        <li><a href="#skills" class="poppinss">Skills</a></li>
+        <li><a href="#education" class="poppinss">Education</a></li>
+        <li><a href="#projects" class="poppinss">Projects</a></li>
+        <li>
+          <a href="#certifications" class="poppinss">Certifications</a>
+        </li>
+      </ul>
+      <ul class="social-links">
+        <li>
+          <a href="https://www.linkedin.com/in/sri-bharath/">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </li>
+        </li>
+      </ul>
+      <p class="t-center my-2 poppins">
+        &copy; All Rights Reserved -
+        <span class="cpy-white poppins">Sri Bharath</span>
+      </p>
+    </footer>
+
+    <script>
+      function scrolltop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+
+    </script>
+
+    <div id="scroll-top" onclick="scrolltop()">
+      <span><i class="fa-solid fa-arrow-up"></i></span>
+    </div>
+  </body>
+
+  </html>
+</body>
+
+</html>
